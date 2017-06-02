@@ -1,6 +1,6 @@
 <?php
 
-namespace Cyberhouse\Maildebug\Domain\Repository;
+namespace GeorgRinger\Maildebug\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 

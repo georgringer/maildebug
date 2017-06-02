@@ -38,4 +38,4 @@ Contribute!
 -----------
 
 Any contribution is highly welcomed.
-Please use the issue tracker of the `GitHub Project <https://github.com/cyberhouse/maildebug/issues>`_!
+Please use the issue tracker of the `GitHub Project <https://github.com/GeorgRinger/maildebug/issues>`_!

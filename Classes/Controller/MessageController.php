@@ -1,17 +1,32 @@
 <?php
 
-namespace Cyberhouse\Maildebug\Controller;
+namespace GeorgRinger\Maildebug\Controller;
+
+use TYPO3\CMS\Backend\View\BackendTemplateView;
 
 class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * messageRepository
 	 *
-	 * @var \Cyberhouse\Maildebug\Domain\Repository\MessageRepository
+	 * @var \GeorgRinger\Maildebug\Domain\Repository\MessageRepository
 	 */
 	protected $messageRepository;
 
-	/**
+    /**
+     * BackendTemplateContainer
+     *
+     * @var BackendTemplateView
+     */
+    protected $view;
+    /**
+     * Backend Template Container
+     *
+     * @var BackendTemplateView
+     */
+    protected $defaultViewObjectName = BackendTemplateView::class;
+
+    /**
 	 * action list
 	 *
 	 * @return void
@@ -24,20 +39,20 @@ class MessageController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action show
 	 *
-	 * @param \Cyberhouse\Maildebug\Domain\Model\Message
+	 * @param \GeorgRinger\Maildebug\Domain\Model\Message
 	 * @return void
 	 */
-	public function showAction(\Cyberhouse\Maildebug\Domain\Model\Message $message) {
+	public function showAction(\GeorgRinger\Maildebug\Domain\Model\Message $message) {
 		$this->view->assign('message', $message);
 	}
 
 	/**
 	 * injectMessageRepository
 	 *
-	 * @param \Cyberhouse\Maildebug\Domain\Repository\MessageRepository $messageRepository
+	 * @param \GeorgRinger\Maildebug\Domain\Repository\MessageRepository $messageRepository
 	 * @return void
 	 */
-	public function injectMessageRepository(\Cyberhouse\Maildebug\Domain\Repository\MessageRepository $messageRepository) {
+	public function injectMessageRepository(\GeorgRinger\Maildebug\Domain\Repository\MessageRepository $messageRepository) {
 		$this->messageRepository = $messageRepository;
 	}
 

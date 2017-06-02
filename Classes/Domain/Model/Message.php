@@ -1,6 +1,6 @@
 <?php
 
-namespace Cyberhouse\Maildebug\Domain\Model;
+namespace GeorgRinger\Maildebug\Domain\Model;
 
 class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
