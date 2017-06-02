@@ -1,6 +1,7 @@
 <?php
+
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die('Access denied.');
 }
 
 $defaultSetting = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'];

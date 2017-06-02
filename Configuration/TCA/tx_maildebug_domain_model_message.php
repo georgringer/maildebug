@@ -1,14 +1,15 @@
 <?php
+
 if (!defined('TYPO3_MODE')) {
-    die ('Access denied.');
+    die('Access denied.');
 }
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message',
-        'label' => 'subject',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
+        'title'          => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message',
+        'label'          => 'subject',
+        'tstamp'         => 'tstamp',
+        'crdate'         => 'crdate',
         'default_sortby' => 'ORDER BY uid DESC',
 //        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('maildebug') . 'ext_icon.png'
     ],
@@ -23,69 +24,69 @@ return [
     ],
     'columns' => [
         'subject' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.subject',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.subject',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'date' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.date',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.date',
             'config' => [
-                'type' => 'input',
-                'size' => 10,
-                'eval' => 'datetime',
+                'type'     => 'input',
+                'size'     => 10,
+                'eval'     => 'datetime',
                 'checkbox' => 1,
-                'default' => time()
+                'default'  => time(),
             ],
         ],
         'tx_maildebug_from' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.tx_maildebug_from',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.tx_maildebug_from',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'tx_maildebug_to' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.tx_maildebug_to',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.tx_maildebug_to',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'cc' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.cc',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.cc',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'bcc' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.bcc',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.bcc',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'content_type' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.content_type',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.content_type',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
         'body' => [
-            'label' => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.body',
+            'label'  => 'LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:tx_maildebug_domain_model_message.body',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
             ],
         ],
     ],
