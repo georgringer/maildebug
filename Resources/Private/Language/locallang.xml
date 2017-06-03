@@ -7,6 +7,7 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="extmng.addresses">Define email addresses which still get emails:Set those email addresses which are allowed to be sent to. * is allowed as well</label>
+			<label index="extmng.logAndSendAllMails">All Mails will be send and logged.</label>
 
 			<label index="tx_maildebug_domain_model_message">Message</label>
 			<label index="tx_maildebug_domain_model_message.subject">subject</label>
