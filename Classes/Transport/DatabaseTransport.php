@@ -113,7 +113,9 @@ class DatabaseTransport implements \Swift_Transport
         if (!is_array($settings) || empty($settings['addresses'])) {
             return true;
         }
-
+        if ($settings['logAndSendAllMails']) {
+            return true;
+        }
         $allowedChecks = GeneralUtility::trimExplode(',', $settings['addresses'], true);
 
         foreach ($allowedChecks as $singleCheck) {
@@ -139,8 +141,8 @@ class DatabaseTransport implements \Swift_Transport
             'subject'           => (string) $message->getSubject(),
             'tx_maildebug_from' => (string) $this->arrayToString($message->getFrom()),
             'tx_maildebug_to'   => (string) $this->arrayToString($message->getTo()),
-            'bcc'               => (string) $message->getBcc(),
-            'cc'                => (string) $message->getCc(),
+            'bcc'               => (string) $this->arrayToString($message->getBcc()),
+            'cc'                => (string) $this->arrayToString($message->getCc()),
             'content_type'      => (string) $message->getContentType(),
         ];
         if (is_object($GLOBALS['TYPO3_DB'])) {

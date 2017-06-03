@@ -2,41 +2,42 @@
 
 <f:section name="content">
 	<h1>Single View for Message</h1>
-
-	<table class="table typo3-dblist">
+	<table class="table typo3-dblist" cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed; ">
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.subject')}</th>
-			<td>{message.subject}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.subject')}</strong></td>
+			<td style="width:auto;">{message.subject}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
-			<td>{message.date -> f:format.date()}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.date')}</strong></td>
+			<td style="width:auto;">{message.date -> f:format.date()}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_from')}</th>
-			<td>{message.from}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_from')}</strong></td>
+			<td style="width:auto;">{message.from}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_to')}</th>
-			<td>{message.to}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_to')}</strong></td>
+			<td style="width:auto;">{message.to}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.cc')}</th>
-			<td>{message.cc}
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.cc')}</strong></td>
+			<td style="width:auto;">{message.cc}
 			</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.bcc')}</th>
-			<td>{message.bcc}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.bcc')}</strong></td>
+			<td style="width:auto;">{message.bcc}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.content_type')}</th>
-			<td>{message.contentType}</td>
+			<td style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.content_type')}</strong></td>
+			<td style="width:auto;">{message.contentType}</td>
 		</tr>
 		<tr>
-			<th>{f:translate(key:'tx_maildebug_domain_model_message.body')}</th>
-			<td>{message.body}</td>
+			<td rowspan="2" style="width:100px;"><strong>{f:translate(key:'tx_maildebug_domain_model_message.body')}</strong></td>
+			<td style="width:auto;">{message.body -> f:format.html()}</td>
+			<td style="width:auto;">{message.body -> f:format.nl2br()}</td>
 		</tr>
+
 	</table>
 	<f:link.action action="list">Back to list</f:link.action>
 </f:section>
