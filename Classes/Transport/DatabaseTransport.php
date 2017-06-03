@@ -113,7 +113,9 @@ class DatabaseTransport implements \Swift_Transport
         if (!is_array($settings) || empty($settings['addresses'])) {
             return true;
         }
-
+        if ($settings['logAndSendAllMails']) {
+            return true;
+        }
         $allowedChecks = GeneralUtility::trimExplode(',', $settings['addresses'], true);
 
         foreach ($allowedChecks as $singleCheck) {

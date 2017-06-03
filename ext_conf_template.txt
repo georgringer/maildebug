@@ -1,2 +1,4 @@
 # cat=basic/enable/101; type=input; label=LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:extmng.addresses
 addresses =
+# cat=basic/enable/102; type=boolean; label=LLL:EXT:maildebug/Resources/Private/Language/locallang.xml:extmng.logAndSendAllMails
+logAndSendAllMails =
