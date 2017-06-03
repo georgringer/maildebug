@@ -13,6 +13,7 @@
 			<label index="tx_maildebug_be_module.group_to">Messages to:</label>
 			<label index="tx_maildebug_be_module.group_date">Messages to:</label>
 			<label index="tx_maildebug_be_module.group_sortBy">Sort messages by</label>
+			<label index="tx_maildebug_be_module.group_filterBy">Filter messages by</label>
 
 			<label index="tx_maildebug_domain_model_message">Message</label>
 			<label index="tx_maildebug_domain_model_message.subject">subject</label>

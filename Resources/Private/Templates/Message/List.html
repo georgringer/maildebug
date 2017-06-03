@@ -4,15 +4,41 @@
 	<f:if condition="{messages}">
 		<f:then>
 			{f:translate(key:'tx_maildebug_be_module.group_sortBy')}
-			<select name="sortBy" id="sortBy" onchange="sortBy()">
+			<select name="sortBy" id="sortBy">
 				<option value="date">date</option>
 				<option value="from">from</option>
 				<option value="to">to</option>
+			</select><br>
+			{f:translate(key:'tx_maildebug_be_module.group_filterBy')}
+			<select name="adresses" id="adresses">
+				<option value="">ALL</option>
+				<optgroup label="From">
+					<f:for each="{adresses.from}" as="adress" key="key">
+						<option value="from-{key}">{adress}</option>
+					</f:for>
+				</optgroup>
+				<optgroup label="To">
+					<f:for each="{adresses.to}" as="adress" key="key">
+						<option value="to-{key}">{adress}</option>
+					</f:for>
+				</optgroup>
+				<optgroup label="Cc">
+					<f:for each="{adresses.cc}" as="adress" key="key">
+						<option value="cc-{key}">{adress}</option>
+					</f:for>
+				</optgroup>
+				<optgroup label="Bcc">
+					<f:for each="{adresses.bcc}" as="adress" key="key">
+						<option value="bcc-{key}">{adress}</option>
+					</f:for>
+				</optgroup>
 			</select>
+			<button id="sort" onclick="sortAndFilter()">Set</button>
+
 			<f:groupedFor each="{messages}" as="messagesByFrom" groupBy="from" groupKey="from">
 				<table class="table table-striped table-hover table-from table-maildebug" style="display:none;">
 					<caption><strong>{f:translate(key:'tx_maildebug_be_module.group_from')}</strong> {from}</caption>
-					<tr>
+					<tr class="header-row">
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.subject')}</th>
 						<f:comment>
@@ -25,7 +51,7 @@
 					</tr>
 
 					<f:for each="{messagesByFrom}" as="message">
-						<tr>
+						<tr data-fromKey="{message.fromKey}" data-toKey="{message.toKey}" data-ccKey="{message.ccKey}" data-bccKey="{message.bccKey}">
 							<td>{message.date -> f:format.date(format:'d.m.Y - H:i:s')}</td>
 							<td>{message.subject}</td>
 							<f:comment>
@@ -58,7 +84,7 @@
 			<f:groupedFor each="{messages}" as="messagesByTo" groupBy="to" groupKey="to">
 				<table class="table table-striped table-hover table-to table-maildebug" style="display:none;">
 					<caption><strong>{f:translate(key:'tx_maildebug_be_module.group_to')}</strong> {to}</caption>
-					<tr>
+					<tr class="header-row">
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.subject')}</th>
 						<th> {f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_from')}</th>
@@ -71,7 +97,7 @@
 					</tr>
 
 					<f:for each="{messagesByTo}" as="message">
-						<tr>
+						<tr data-fromKey="{message.fromKey}" data-toKey="{message.toKey}" data-ccKey="{message.ccKey}" data-bccKey="{message.bccKey}">
 							<td>{message.date -> f:format.date(format:'d.m.Y - H:i:s')}</td>
 							<td>{message.subject}</td>
 							<f:comment>
@@ -105,25 +131,20 @@
 			<f:groupedFor each="{messages}" as="messagesByDate" groupBy="formatedDate" groupKey="date">
 				<table class="table table-striped table-hover table-date table-maildebug">
 					<caption><strong>{f:translate(key:'tx_maildebug_be_module.group_date')}</strong> {date}</caption>
-					<tr>
+					<tr class="header-row">
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.subject')}</th>
-						<th> {f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_from')}</th>
+						<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
 						<th> {f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_to')}</th>
-						<f:comment>
-							<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
-						</f:comment>
+						<th> {f:translate(key:'tx_maildebug_domain_model_message.tx_maildebug_from')}</th>
 						<th> {f:translate(key:'tx_maildebug_domain_model_message.content_type')}</th>
 						<th> {f:translate(key:'tx_maildebug_domain_model_message.body')}</th>
 						<th></th>
 					</tr>
 
 					<f:for each="{messagesByDate}" as="message">
-						<tr>
+						<tr data-fromKey="{message.fromKey}" data-toKey="{message.toKey}" data-ccKey="{message.ccKey}" data-bccKey="{message.bccKey}">
 							<td>{message.subject}</td>
-							<f:comment>
-								<td>{message.date -> f:format.date(format:'d.m.Y - H:i:s')}</td>
-
-							</f:comment>
+							<td>{message.date -> f:format.date(format:'d.m.Y - H:i:s')}</td>
 							<td>{message.to}
 
 								<f:if condition="{message.cc}">
@@ -168,18 +189,58 @@
 				el.style.display = 'none';
 			}
 		}
-		function sortBy(){
-			var value = document.getElementById("sortBy").value;
+		function sortAndFilter(){
+			var sortValue = document.getElementById("sortBy").value;
+			var filterValue = document.getElementById("adresses").value.split('-');
 			var tables = document.getElementsByClassName("table-maildebug" );
+			var tr = document.getElementsByTagName("tr");
+			var contains = function(needle) {
+				// Per spec, the way to identify NaN is that it is not equal to itself
+				var findNaN = needle !== needle;
+				var indexOf;
+
+				if(!findNaN && typeof Array.prototype.indexOf === 'function') {
+					indexOf = Array.prototype.indexOf;
+				} else {
+					indexOf = function(needle) {
+						var i = -1, index = -1;
+
+						for(i = 0; i < this.length; i++) {
+							var item = this[i];
+
+							if((findNaN && item !== item) || item === needle) {
+								index = i;
+								break;
+							}
+						}
+
+						return index;
+					};
+				}
+
+				return indexOf.call(this, needle) > -1;
+			};
+//			sort
 			for(var i = 0; i < tables.length; i++)
 			{
-				if(tables.item(i).classList.contains("table-" + value)){
+				if(tables.item(i).classList.contains("table-" + sortValue)){
 					tables.item(i).style.display = "table";
 				} else {
 					tables.item(i).style.display = "none";
-
 				}
 			}
+			console.log(filterValue,':200')
+			for(var i = 0; i < tr.length; i++)
+			{
+				var trData = tr.item(i).getAttribute("data-" + filterValue[0] + 'key');
+				trData = (trData === null) ? [] : trData.split(',');
+				if(tr.item(i).classList.contains('header-row') || filterValue[0] === '' || contains.call(trData, filterValue[1]) === true){
+					tr.item(i).style.display = "table-row";
+				} else {
+					tr.item(i).style.display = "none";
+				}
+			}
+//			filter
 
 		}
 	</script>

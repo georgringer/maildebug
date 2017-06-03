@@ -25,6 +25,35 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $txMaildebugFrom;
+    
+    /**
+     * fromKey.
+     *
+     * @var int
+     */
+    protected $fromKey;
+    
+    /**
+     * toKey.
+     *
+     * @var int
+     */
+    protected $toKey;
+    
+    /**
+     * ccKey.
+     *
+     * @var int
+     */
+    protected $ccKey;
+    
+    
+    /**
+     * bccKey.
+     *
+     * @var int
+     */
+    protected $bccKey;
 
     /**
      * to.
@@ -140,6 +169,95 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTxMaildebugFrom($from)
     {
         $this->txMaildebugFrom = $from;
+    }
+    
+    
+    /**
+     * Returns the fromKey.
+     *
+     * @return int $fromKey
+     */
+    public function getFromKey()
+    {
+        return $this->fromKey;
+    }
+    
+    /**
+     * Sets the fromKey.
+     *
+     * @param int $fromKey
+     *
+     * @return void
+     */
+    public function setFromKey($fromKey)
+    {
+        $this->fromKey = $fromKey;
+    }
+
+    /**
+     * Returns the toKey.
+     *
+     * @return int $toKey
+     */
+    public function getToKey()
+    {
+        return $this->toKey;
+    }
+    
+    /**
+     * Sets the toKey.
+     *
+     * @param int $toKey
+     *
+     * @return void
+     */
+    public function setToKey($toKey)
+    {
+        $this->toKey = $toKey;
+    }
+    
+    /**
+     * Returns the ccKey.
+     *
+     * @return int $ccKey
+     */
+    public function getCcKey()
+    {
+        return $this->ccKey;
+    }
+    
+    /**
+     * Sets the ccKey.
+     *
+     * @param int $ccKey
+     *
+     * @return void
+     */
+    public function setCcKey($ccKey)
+    {
+        $this->ccKey = $ccKey;
+    }
+
+    /**
+     * Returns the bccKey.
+     *
+     * @return int $bccKey
+     */
+    public function getBccKey()
+    {
+        return $this->bccKey;
+    }
+    
+    /**
+     * Sets the bccKey.
+     *
+     * @param int $bccKey
+     *
+     * @return void
+     */
+    public function setBccKey($bccKey)
+    {
+        $this->bccKey = $bccKey;
     }
 
     /**
