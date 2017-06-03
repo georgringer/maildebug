@@ -18,36 +18,34 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $date;
 
-
     /**
      * from.
      *
      * @var string
      */
     protected $txMaildebugFrom;
-    
+
     /**
      * fromKey.
      *
      * @var int
      */
     protected $fromKey;
-    
+
     /**
      * toKey.
      *
      * @var int
      */
     protected $toKey;
-    
+
     /**
      * ccKey.
      *
      * @var int
      */
     protected $ccKey;
-    
-    
+
     /**
      * bccKey.
      *
@@ -170,8 +168,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->txMaildebugFrom = $from;
     }
-    
-    
+
     /**
      * Returns the fromKey.
      *
@@ -181,7 +178,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->fromKey;
     }
-    
+
     /**
      * Sets the fromKey.
      *
@@ -203,7 +200,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->toKey;
     }
-    
+
     /**
      * Sets the toKey.
      *
@@ -215,7 +212,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->toKey = $toKey;
     }
-    
+
     /**
      * Returns the ccKey.
      *
@@ -225,7 +222,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->ccKey;
     }
-    
+
     /**
      * Sets the ccKey.
      *
@@ -247,7 +244,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->bccKey;
     }
-    
+
     /**
      * Sets the bccKey.
      *
