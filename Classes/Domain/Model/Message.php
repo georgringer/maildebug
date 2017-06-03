@@ -18,6 +18,7 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $date;
 
+
     /**
      * from.
      *
@@ -90,6 +91,16 @@ class Message extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Returns the formated date.
+     *
+     * @return string $formatedDate
+     */
+    public function getFormatedDate()
+    {
+        return $this->date->format('Y-m-d');
     }
 
     /**
