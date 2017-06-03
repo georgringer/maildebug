@@ -10,7 +10,7 @@
 				<option value="to">to</option>
 			</select>
 			<f:groupedFor each="{messages}" as="messagesByFrom" groupBy="from" groupKey="from">
-				<table class="table table-striped table-hover table-from table-maildebug">
+				<table class="table table-striped table-hover table-from table-maildebug" style="display:none;">
 					<caption><strong>{f:translate(key:'tx_maildebug_be_module.group_from')}</strong> {from}</caption>
 					<tr>
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
@@ -56,7 +56,7 @@
 				</table>
 			</f:groupedFor>
 			<f:groupedFor each="{messages}" as="messagesByTo" groupBy="to" groupKey="to">
-				<table class="table table-striped table-hover table-to table-maildebug">
+				<table class="table table-striped table-hover table-to table-maildebug" style="display:none;">
 					<caption><strong>{f:translate(key:'tx_maildebug_be_module.group_to')}</strong> {to}</caption>
 					<tr>
 						<th>{f:translate(key:'tx_maildebug_domain_model_message.date')}</th>
@@ -182,6 +182,5 @@
 			}
 
 		}
-		sortBy();
 	</script>
 </f:section>
